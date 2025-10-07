@@ -1,4 +1,19 @@
 ---
+const pageTitle = "Sobre nosotros";
+
+const identity = {
+    firstName: "Ricki",
+    lastName: "Quispe",
+    occupation: "Desarrollador Web",
+    role: "Web Developer",
+    hobbies: ["Leer", "Viajar", "Programar"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro", "React"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 
 ---
 
@@ -8,15 +23,32 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Nosotros</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
         <a href="/">Inicio</a>
 		<a href="/about">Sobre nosotros</a>
         <a href="/blog">Blog</a>
-		<h1>Sobre nosotros</h1>
-        <h2>Esta pagina es sobre nosotros y esta construida con Astro.</h2>
-        <p>Somos un equipo de desarrolladores apasionados por la tecnologia y la creatividad.</p>
-        <p>Creemos en el poder de la colaboracion y la innovacion para crear experiencias web excepcionales.</p>
-	</body>
+		<h1>{pageTitle}</h1>
+        <h2>Esta pagina es sobre mi.</h2>
+        <p>Aqui algunos datos sobre mi:</p>
+        {happy && <p>¡Estoy feliz de aprender ASTRO!</p>}
+
+        {finished && <p>¡He terminado mi primer proyecto en Astro!</p>}
+
+        {goal === 3 ? <p>¡He alcanzado mi objetivo de {goal} días!</p> : <p>Aún no he alcanzado mi objetivo de {goal} proyectos.</p>}
+        
+        <ul>
+            <li>Nombre: {identity.firstName} {identity.lastName}</li>
+            <li>Ocupación: {identity.occupation}</li>
+            <li>Habilidades: {skills.join(", ")}</li>
+            {identity.hobbies.length >= 2 &&
+                <li>Dos de mis aficiones son: {identity.hobbies[0]} y {identity.hobbies[1]}.</li>
+                }
+        </ul>
+        <p>Mis Habilidades son:</p>
+        <ul>
+            {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+    </body>
 </html>
